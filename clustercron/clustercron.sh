@@ -1,5 +1,8 @@
 #!/bin/bash
 
+## pve-clustercron
+## Simple attempt at creating cluster wide cron jobs
+
 ##  
 ##  MIT License
 ##  
@@ -39,29 +42,25 @@ function am_i_active {
 }
 
 function get_master {
-    master=$(<$ACTIVEFILE)
-    echo Active cron node: $master
+    MASTER=$(<$ACTIVEFILE)
+    echo Active cron node: $MASTER
 }
 
 function select_master {
     # relying on working ha-manager by default
-    hamaster=$(ha-manager status | grep 'mastaer' | awk '{print $2}')
-    if [ -z "$hamaster" ];then
+    HA_MASTER=$(ha-manager status | grep 'master' | awk '{print $2}')
+    if [ -z "$HA_MASTER" ];then
         # HA is not configured
         # selecting the master by random sleep "race"
         select_active_node
-    elif [ "$hamaster" == "$HOSTNAME" ];then
+    elif [ "$HA_MASTER" == "$HOSTNAME" ];then
         # HA is running
-        echo "$hamaster" > $ACTIVEFILE
-    else
-        echo "Something went wrong..."
+        echo "$HA_MASTER" > $ACTIVEFILE
     fi
 }
 
 function select_active_node {
-    if [ -z $WAITLIMIT ]; then
-        WAITLIMIT=59
-    fi
+    WAITLIMIT=${WAITLIMIT:=59}
     
     # sleep limited random seconds
     WAIT=$[ $RANDOM % $WAITLIMIT ]

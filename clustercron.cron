@@ -1,0 +1,18 @@
+## cluster wide cron schedule
+## 
+##  symlink this file to /etc/cron.d/pve-clustercron
+PATH="/usr/sbin:/usr/bin:/sbin:/bin"
+##
+## selecting master node
+## DO NOT DISABLE THIS LINE
+30 * * * *           root bash /etc/pve/clustercron/clustercron.sh select
+## ####
+##
+## Configure your cron jobs below.
+##
+## Prefix your job command with "bash /etc/pve/clustercron/clustercron.sh isactive && " 
+## in order to only run when the current node is the master. 
+## The "isactive" option will return true in that case.
+##
+#15 * * * *           root bash /etc/pve/clustercron/clustercron.sh isactive && <command>
+

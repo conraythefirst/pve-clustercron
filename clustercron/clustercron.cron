@@ -14,5 +14,5 @@ PATH="/usr/sbin:/usr/bin:/sbin:/bin"
 ## in order to only run when the current node is the master. 
 ## The "isactive" option will return true in that case.
 ##
-#15 * * * *           root bash /etc/pve/clustercron/clustercron.sh isactive && <command>
+#15 * * * *           root bash /etc/pve/clustercron/clustercron.sh isactive && my-cron-job
 

@@ -9,7 +9,7 @@ Run on any proxmox node:
 ```
   # git clone https://github.com/conraythefirst/pve-clustercron.git
   # cd pve-clustercron/
-  # cp -r pve-clustercron/ /etc/pve/
+  # cp -r clustercron/ /etc/pve/
 ```
 Run on each proxmox node:
 ```

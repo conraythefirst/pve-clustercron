@@ -27,8 +27,8 @@
 ##  SOFTWARE.
 
 
-ACTIVEFILE=$( dirname $0)/.master
 WAITLIMIT=59
+ACTIVEFILE=$( dirname $0)/.master
 HOSTNAME=$(hostname)
 
 function am_i_active {
@@ -68,9 +68,9 @@ function select_active_node {
     
     # get timestamps
     FILEAGE=$(stat -c %Y $ACTIVEFILE)
+    FILEAGE=${FILEAGE:=0}
     TS=$(date +%s)
-    TS=${TS:=0}
-    
+        
     # become active node when first finishing sleep
     if [[ "$[$TS - $FILEAGE]" -gt "$WAIT" ]]; then
         echo $HOSTNAME > $ACTIVEFILE

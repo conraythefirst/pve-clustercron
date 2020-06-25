@@ -9,7 +9,7 @@ Run on any proxmox node:
 ```
   # git clone https://github.com/conraythefirst/pve-clustercron.git
   # cd pve-clustercron/
-  # cp -r pve-clustercron/ /etc/pve/
+  # cp -r clustercron/ /etc/pve/
 ```
 Run on each proxmox node:
 ```
@@ -26,7 +26,7 @@ Prefix your commands with "bash /etc/pve/clustercron/clustercron.sh isactive && 
 
 
 # Usage clustercron.sh
-'''
+```
 clustercron.sh [select|status|isactive]
     select   - select master node
                if HA is configured then ha-manager is used
@@ -34,6 +34,6 @@ clustercron.sh [select|status|isactive]
     status   - return current master node
     isactive - return ture if master, false if not
 
-'''
+```
 
 

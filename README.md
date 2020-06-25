@@ -18,9 +18,9 @@ Run on each proxmox node:
 
 Now add your cron jobs to /etc/pve/clustercron/clustercron.cron
 
-Prefix your commands with "bash /etc/pve/clustercron/clustercron.sh isactive && " to only run on the master node.
+Prefix your commands with "bash /etc/pve/clustercron/clustercron.sh isactive && " in order to only run on the master node.
 ```
-  15 * * * *           root bash /etc/pve/clustercron/clustercron.sh isactive && my-cron
+  15 * * * *           root bash /etc/pve/clustercron/clustercron.sh isactive && my-cron-job
 ```
 
 
